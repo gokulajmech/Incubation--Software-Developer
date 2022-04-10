@@ -1,0 +1,95 @@
+
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args)
+    {
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("Dimensions of the dungeon(Row x Column): ");
+        int r= myObj.nextInt();
+        int c= myObj.nextInt();
+
+        char[][] arr = new char[r+1][c+1];
+        for(int i=1;i<=r;i++)
+        {
+            for(int j=0;j<=c;j++)
+            {
+                if(j==0)
+                    arr[i][j]='P';
+                else
+                    arr[i][j]='1';
+            }
+        }
+
+        System.out.println("Position of adventurer: ");
+        int Ai= myObj.nextInt();
+        int Aj= myObj.nextInt();
+        arr[Ai][Aj]='A';
+
+        System.out.println("Position of gold: ");
+        int Gi= myObj.nextInt();
+        int Gj= myObj.nextInt();
+        arr[Gi][Gj]='G';
+
+        System.out.println("Enter the number of pits :");
+        int n=myObj.nextInt();
+
+        for(int i=0;i<n;i++)
+        {
+            System.out.printf("Position of pit %d :",i+1);
+            int Pi = myObj.nextInt();
+            int Pj = myObj.nextInt();
+            arr[Pi][Pj]='P';
+        }
+
+        char out='1';
+        int POSj=0,POSi=0,count=0;
+        while(out!='G')
+        {
+            if (Aj > Gj) {
+                for (int j = Aj; j >= Gj  && arr[Ai][j]!='P'; j--) {
+                    System.out.print("(" + Ai + "," + j + ")->");
+                    out=arr[Ai][j];
+                    POSj=j;
+                    count++;
+                }
+            }
+            if (Aj < Gj) {
+                for (int j = Aj+1; j <= Gj && arr[Ai][j]!='P'; j++) {
+                    out=arr[Ai][j];
+                    POSj=j;
+                    count++;
+                }
+            }
+            Aj=POSj;
+            if (Ai < Gi) {
+                for (int i = Ai + 1; i <= Gi && arr[i][Aj]!='P'; i++) {
+                    out=arr[i][Aj];
+                    POSi=i;
+                    count++;
+                }
+            }
+            if (Ai > Gi) {
+                for (int i = Ai - 1; i >= Gi && arr[i][Aj]!='P'; i--) {
+                    out=arr[i][Aj];
+                    POSi=i;
+                    count++;
+                }
+            }
+            Ai=POSi;
+            if(count==0)
+            {
+                break;
+            }
+
+        }
+        System.out.println("Output :");
+        if (out=='G')
+        {
+            System.out.println("Minimum number of steps:" +count);
+        }
+        else
+        System.out.println("No possible solution");
+    }
+}
