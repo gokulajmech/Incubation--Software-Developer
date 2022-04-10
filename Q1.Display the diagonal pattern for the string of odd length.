@@ -1,9 +1,23 @@
+Sample Input 1:
+		Enter the string : racecar
+	
+Sample Output 2:
+
+					e
+				c		c
+			a				a
+		r						r
+			a				a
+				c		c
+					e
+Answer:
+
 import java.util.Scanner;
 
 public class main {
     public static void main(String[] args)
     {
-        System.out.println("Enter the Odd Length String");
+        System.out.println("Enter the Odd Length String :");
         Scanner myobj = new Scanner(System.in);
         String input=myobj.nextLine();
         boolean validation=stringEligility(input.length());
@@ -26,6 +40,7 @@ public class main {
     }
     public static void printPattern(String finput)
     {
+        System.out.println("Output :");
         char[] str=finput.toCharArray();
         int var1=0,var2=0,k=finput.length()/2;
         for(int i=0;i<finput.length();i++)
