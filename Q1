@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args)
+    {
+        Scanner myObj = new Scanner(System.in);
+
+        int count=0;
+        System.out.println("Dimensions of the dungeon(Row x Column): ");
+        int r= myObj.nextInt();
+        int c= myObj.nextInt();
+
+        System.out.println("Position of adventurer: ");
+        int Ai= myObj.nextInt();
+        int Aj= myObj.nextInt();
+
+        System.out.println("Position of gold: ");
+        int Gi= myObj.nextInt();
+        int Gj= myObj.nextInt();
+
+        int Amove = Math.abs(Ai - Gi) + Math.abs(Aj - Gj);
+        System.out.println("Output :Minimum number of steps:" + Amove);
+
+    }
+}
