@@ -1,0 +1,65 @@
+Input:
+		Enter the number : 5
+
+	Output:	
+
+		5 5 5 5 5 5 5 5 5
+		5 4 4 4 4 4 4 4 5
+		5 4 3 3 3 3 3 4 5
+		5 4 3 2 2 2 3 4 5
+		5 4 3 2 1 2 3 4 5
+		5 4 3 2 2 2 3 4 5
+		5 4 3 3 3 3 3 4 5
+		5 4 4 4 4 4 4 4 5
+		5 5 5 5 5 5 5 5 5
+
+
+Answer:
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args)
+    {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Input:");
+        int input = myObj.nextInt();
+        int value = input*2-1;
+        int r=0,c=0,l=value,k=value,count=input;
+        Integer[][] arr= new Integer[value][value];
+
+
+        while(r<l && c<k)
+        {
+            for(int i=c;i<k;i++)
+            {
+                arr[c][i]=count;
+            }r++;
+            for(int j=r;j<l;j++)
+            {
+                arr[j][l-1]=count;
+            }k--;
+            for(int i=k-1;i>=c;i--)
+            {
+                arr[k][i]=count;
+            }l--;
+            for(int i=l-1;i>c;i--)
+            {
+                arr[i][c]=count;
+            }c++;
+            count--;
+        }
+        //pattern print
+        System.out.println("Output :");
+        for(int i=0;i<value;i++)
+        {
+            for(int j=0;j<value;j++)
+            {
+                System.out.printf("%2d",arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
+
